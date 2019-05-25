@@ -3,18 +3,18 @@ package com.liyu;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.stereotype.Service;
 
-
-@EnableBinding(Source.class)
+@Service
+@EnableBinding(MySource.class)
 public class SendService {
 
     @Autowired
-    Source source;
+    MySource source;
 
-    public void sendMsg(){
-        source.output().send(MessageBuilder.withPayload("sss").build());
+    public void sendMsg(String msg) {
+        source.myOutput().send(MessageBuilder.withPayload(msg).build());
     }
 
 }

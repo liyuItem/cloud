@@ -1,8 +1,8 @@
 server:
-  port: 7888
+  port: 7889
 spring:
   application:
-    name: producer
+    name: consume
   cloud:
     stream:
       kafka:
@@ -11,6 +11,7 @@ spring:
           zk-nodes: localhost:2181
           auto-create-topics: true
       bindings:
-        myOutput:
+        myInput:
           destination: steam-demo
           content-type: text/plain
+          group: group
