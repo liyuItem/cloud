@@ -1,0 +1,18 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: api-gateway
+zuul:
+  routes:
+    user-service:
+      path: /user/**
+      serviceId: user-service
+  prefix: /xh/
+#  放过一些敏感头
+  sensitive-headers:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://45.78.69.161:8889/eureka/,http://45.78.69.161:8888/eureka/
